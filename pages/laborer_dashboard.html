@@ -69,12 +69,14 @@
                                     </svg>
                                     Profile Settings
                                 </a>
+                                <button onclick="handleLogout()" class="text-text-secondary hover:text-error transition-smooth" title="Logout" aria-label="Logout">
                                 <a href="user_login.html" class="flex items-center px-4 py-2 text-body text-text-secondary hover:bg-secondary-50 hover:text-error transition-smooth">
                                     <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
                                     </svg>
                                     Sign Out
                                 </a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -647,6 +649,29 @@
                 jobCards[0].classList.add('ring-2', 'ring-primary');
             }, 100);
         }
+        // Authentication Functions
+        function handleLogout() {
+        // Confirm logout action
+        if (confirm('Are you sure you want to sign out?')) {
+            // Clear all authentication data
+            localStorage.removeItem('skillconnect_user');
+            sessionStorage.removeItem('redirect_dashboard');
+            
+            // Clear any other session-related data
+            sessionStorage.clear();
+            
+            // Show logout message briefly
+            const logoutMessage = document.createElement('div');
+            logoutMessage.className = 'fixed top-4 right-4 bg-success text-white px-4 py-2 rounded-lg shadow-lg z-50';
+            logoutMessage.textContent = 'Successfully signed out';
+            document.body.appendChild(logoutMessage);
+            
+            // Redirect to login page after brief delay
+            setTimeout(() => {
+                window.location.href = 'user_login.html';
+            }, 1000);
+        }
+    }
     </script>
 </body>
 </html>
