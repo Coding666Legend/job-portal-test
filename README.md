@@ -1,6 +1,6 @@
 # Job-Portal-Test
 
-# HTML
+# THIS IS JUST A TEMPLATE FOR THE README.MD
 
 A modern HTML project utilizing Tailwind CSS for building responsive web applications with minimal setup.
 
